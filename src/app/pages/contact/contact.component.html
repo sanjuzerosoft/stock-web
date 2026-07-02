@@ -1,0 +1,129 @@
+<section class="route-page" id="contact">
+  <div class="docpage">
+    <div class="wrap">
+      <div class="dochead">
+        <span class="pill-top">● Contact Us</span>
+        <h1>Contact Us</h1>
+        <p class="sub">Have a question or feedback? We'd love to hear from you.</p>
+      </div>
+      <form class="cform" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <div class="field">
+          <label for="contact-name">Name</label>
+          <input
+            id="contact-name"
+            type="text"
+            formControlName="name"
+            placeholder="Your full name"
+            [class.invalid]="showError('name')"
+          />
+          @if (showError('name')) {
+            <p class="field-error">{{ errorMessage('name') }}</p>
+          }
+        </div>
+        <div class="field">
+          <label for="contact-email">Email</label>
+          <input
+            id="contact-email"
+            type="email"
+            formControlName="email"
+            placeholder="your@email.com"
+            [class.invalid]="showError('email')"
+          />
+          @if (showError('email')) {
+            <p class="field-error">{{ errorMessage('email') }}</p>
+          }
+        </div>
+        <div class="field">
+          <label for="contact-phone">Phone Number</label>
+          <input
+            id="contact-phone"
+            type="tel"
+            formControlName="phone"
+            placeholder="+1 (000) 000-0000"
+            [class.invalid]="showError('phone')"
+          />
+          @if (showError('phone')) {
+            <p class="field-error">{{ errorMessage('phone') }}</p>
+          }
+        </div>
+        <div class="field">
+          <label for="contact-message">Message</label>
+          <textarea
+            id="contact-message"
+            formControlName="message"
+            placeholder="Tell us how we can help…"
+            [class.invalid]="showError('message')"
+          ></textarea>
+          @if (showError('message')) {
+            <p class="field-error">{{ errorMessage('message') }}</p>
+          }
+        </div>
+
+        @if (submitSuccess()) {
+          <div class="form-alert success">
+            Thank you! Your message has been sent. We'll get back to you within 1 business day.
+          </div>
+        }
+
+        @if (submitError()) {
+          <div class="form-alert error">{{ submitError() }}</div>
+        }
+
+        <button class="send-btn" type="submit" [disabled]="submitting()">
+          <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z" /></svg>
+          {{ submitting() ? 'Sending…' : 'Send Message' }}
+        </button>
+
+        @if (reachLoading()) {
+          <div class="contact-reach-loading" aria-hidden="true">
+            <div class="sk sk-line sk-line--short" style="margin: 34px auto 20px"></div>
+            <div class="sk" style="height: 88px; border-radius: 16px; margin-bottom: 14px"></div>
+            <div class="sk" style="height: 88px; border-radius: 16px; margin-bottom: 14px"></div>
+            <div class="sk" style="height: 72px; border-radius: 16px"></div>
+          </div>
+        } @else if (reachContent()) {
+          <div class="contact-reach" [innerHTML]="reachContent()"></div>
+        } @else {
+          <div class="reach-div">OR REACH US DIRECTLY</div>
+          <div class="contact-card">
+            <div class="ic">
+              <svg viewBox="0 0 24 24"><path d="M3 6h18v12H3zM3 7l9 6 9-6" /></svg>
+            </div>
+            <div>
+              <div class="k">Email us</div>
+              <div class="v">info@stock-advisors.com</div>
+            </div>
+          </div>
+          <div class="contact-card pu" data-nav="/" role="button" tabindex="0">
+            <div class="ic">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M4 12a8 8 0 1116 0c0 4-3.6 7-8 7-1.2 0-2.3-.2-3.3-.6L4 20l1.2-3.2A7 7 0 014 12z"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="k">Community</div>
+              <div class="v">Post in Stock Chatter</div>
+            </div>
+          </div>
+          <div class="callout info">
+            <svg
+              viewBox="0 0 24 24"
+              style="stroke: var(--amber); fill: none; stroke-width: 2"
+            >
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 7v5l3 2" />
+            </svg>
+            <div>
+              <b>Typical response:</b> within 1 business day. For urgent trading questions, also see
+              today's Daily Trading Updates document.
+            </div>
+          </div>
+        }
+      </form>
+    </div>
+  </div>
+
+  <!-- <app-footer /> -->
+</section>

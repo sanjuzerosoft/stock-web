@@ -1,0 +1,26 @@
+<section class="route-page" id="home" style="padding: 0">
+  @if (loading()) {
+    <app-page-loading variant="home" />
+  } @else if (loadError()) {
+    <div class="wrap page-error">
+      <div class="page-error__icon" aria-hidden="true">!</div>
+      <p>{{ loadError() }}</p>
+    </div>
+  } @else {
+    <div class="hero home-section" [innerHTML]="sections().hero"></div>
+
+    <section class="strat home-section" id="strategies" [innerHTML]="sections().strategies"></section>
+
+    <section class="features home-section" id="features" [innerHTML]="sections().features"></section>
+
+    <section class="build home-section" id="build" [innerHTML]="sections().build"></section>
+
+    <section class="features chatter home-section" [innerHTML]="sections().chatter"></section>
+
+    <section class="gallery home-section" [innerHTML]="sections().gallery"></section>
+
+    <section class="pricing home-section" id="pricing" [innerHTML]="sections().pricing"></section>
+  }
+
+  <app-footer />
+</section>

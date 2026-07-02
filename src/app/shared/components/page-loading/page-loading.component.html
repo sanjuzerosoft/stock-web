@@ -1,0 +1,47 @@
+<div
+  class="page-loading"
+  [class.page-loading--home]="variant() === 'home'"
+  role="status"
+  aria-live="polite"
+  aria-label="Loading content"
+>
+  @if (variant() === 'home') {
+    <div class="page-loading__hero wrap">
+      <div class="page-loading__hero-copy">
+        <div class="sk sk-h1"></div>
+        <div class="sk sk-line sk-line--wide"></div>
+        <div class="sk sk-line sk-line--wide"></div>
+        <div class="sk sk-line sk-line--med"></div>
+        <div class="page-loading__chips">
+          <div class="sk sk-chip"></div>
+          <div class="sk sk-chip"></div>
+        </div>
+        <div class="page-loading__stores">
+          <div class="sk sk-store"></div>
+          <div class="sk sk-store"></div>
+        </div>
+        <div class="sk sk-line sk-line--short"></div>
+      </div>
+      <div class="sk sk-phone" aria-hidden="true"></div>
+    </div>
+  } @else {
+    <div class="page-loading__doc">
+      <div class="sk sk-pill"></div>
+      <div class="sk sk-h1 sk-h1--doc"></div>
+      <div class="sk sk-line sk-line--wide"></div>
+      <div class="page-loading__body">
+        <div class="sk sk-line"></div>
+        <div class="sk sk-line"></div>
+        <div class="sk sk-line sk-line--med"></div>
+        <div class="sk sk-line"></div>
+        <div class="sk sk-line sk-line--short"></div>
+      </div>
+    </div>
+  }
+
+  <div class="page-loading__indicator" aria-hidden="true">
+    <span class="page-loading__dot"></span>
+    <span class="page-loading__dot"></span>
+    <span class="page-loading__dot"></span>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="promo">
+  <b>Two weeks free.</b> No credit card required.<span class="dot">●</span>Start your 14-day trial &amp;
+  cancel anytime.
+</div>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" routerLink="/">
+      <span class="glyph">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#062c2a"
+          stroke-width="2.4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          style="width: 18px; height: 18px"
+        >
+          <path d="M3 16l5-5 4 4 8-8" />
+          <path d="M20 7h-4M20 7v4" />
+        </svg>
+      </span>
+      <span>Stock Advisors<small>Invest Smarter</small></span>
+    </a>
+
+    <nav class="nav-links">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a routerLink="/about" routerLinkActive="active">About</a>
+      <a routerLink="/disclosure" routerLinkActive="active">Disclosure</a>
+      <a routerLink="/privacy" routerLinkActive="active">Privacy</a>
+      <a routerLink="/contact" routerLinkActive="active">Contact</a>
+    </nav>
+
+    <div class="nav-cta" (click)="onScroll('pricing')">Start free trial</div>
+  </div>
+</header>

@@ -1,0 +1,25 @@
+<section class="route-page" [id]="pageId()">
+  <div class="docpage">
+    <div class="wrap">
+      @if (loading()) {
+        <app-page-loading variant="doc" />
+      } @else if (error()) {
+        <div class="page-error">
+          <div class="page-error__icon" aria-hidden="true">!</div>
+          <p>{{ error() }}</p>
+        </div>
+      } @else {
+        <div class="dochead">
+          <span class="pill-top">● {{ pillLabel() }}</span>
+          <h1>{{ title() }}</h1>
+        </div>
+
+        @if (safeContent()) {
+          <div class="doc api-content" [innerHTML]="safeContent()"></div>
+        }
+      }
+    </div>
+  </div>
+
+  <!-- <app-footer /> -->
+</section>

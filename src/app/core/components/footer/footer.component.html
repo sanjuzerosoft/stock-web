@@ -1,0 +1,59 @@
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <span class="glyph">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#062c2a"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="width: 16px; height: 16px"
+            >
+              <path d="M3 16l5-5 4 4 8-8" />
+              <path d="M20 7h-4M20 7v4" />
+            </svg>
+          </span>
+          Stock Advisors
+        </div>
+        <p style="color: var(--text2); font-size: 14.5px; max-width: 320px">
+          Quant-powered AI picks, personalized portfolios, and daily market commentary from Dynamic
+          Investment Advisors, LLC — an independent research firm.
+        </p>
+      </div>
+      <div class="foot-col">
+        <h5>Product</h5>
+        <a routerLink="/">Home</a>
+        <a (click)="onScroll('strategies')">Strategies</a>
+        <a (click)="onScroll('features')">Features</a>
+        <a (click)="onScroll('build')">Build a portfolio</a>
+        <a (click)="onScroll('pricing')">Pricing</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a routerLink="/about">About us</a>
+        <a routerLink="/disclosure">Disclosure</a>
+        <a routerLink="/privacy">Privacy Policy</a>
+        <a routerLink="/contact">Contact us</a>
+        <a href="mailto:info@stock-advisors.com">info@stock-advisors.com</a>
+      </div>
+    </div>
+    @if (bottomContent()) {
+      <div [innerHTML]="bottomContent()"></div>
+    } @else {
+      <p class="disclaimer">
+        All content is for informational purposes only and does not constitute a solicitation or offer
+        to buy or sell any securities. Past performance is not indicative of future results. Dynamic
+        Investment Advisors or Stock Advisors app management may or may not have positions in
+        recommended stocks. Investing involves risk, including possible loss of principal.
+      </p>
+      <div class="foot-bottom">
+        <span>© 2026 Dynamic Investment Advisors, LLC. All rights reserved.</span>
+        <span>iOS &amp; Android · $4.99/month · 14-day free trial, no card required</span>
+      </div>
+    }
+  </div>
+</footer>
