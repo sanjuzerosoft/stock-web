@@ -11,10 +11,17 @@ export class NavigationService {
       return;
     }
 
+    let attempts = 0;
     const scroll = () => {
       const el = document.getElementById(sectionId);
       if (el) {
         el.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+
+      if (attempts < 10) {
+        attempts += 1;
+        setTimeout(scroll, 100);
       }
     };
 
@@ -23,7 +30,7 @@ export class NavigationService {
     if (onHome) {
       setTimeout(scroll, 60);
     } else {
-      void this.router.navigate(['/']).then(() => setTimeout(scroll, 100));
+      void this.router.navigate(['/'], { fragment: sectionId });
     }
   }
 
