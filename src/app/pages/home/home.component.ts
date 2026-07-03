@@ -29,6 +29,48 @@ export class HomeComponent implements OnInit {
 
   protected readonly sections = signal<Partial<Record<HomeSectionKey, SafeHtml>>>({});
 
+  @HostListener('document:click', ['$event'])
+  protected onDocumentClick(event: MouseEvent): void {
+    const anchor = (event.target as HTMLElement).closest('a');
+    if (!anchor) return;
+
+    // Only handle anchors inside home-section dynamic content
+    if (!anchor.closest('.home-section')) return;
+
+    const href = (anchor as HTMLAnchorElement).getAttribute('href') || '';
+    if (!href) return;
+
+    if (href.startsWith('mailto:') || href.startsWith('tel:')) return;
+
+    let url: URL | null = null;
+    try {
+      url = new URL(href, document.baseURI);
+    } catch {
+      url = null;
+    }
+
+    if (url && url.origin !== location.origin) return;
+
+    const baseEl = document.querySelector('base[href]');
+    const baseHref = baseEl?.getAttribute('href') ?? '/';
+    let basePath = '';
+    try {
+      basePath = new URL(baseHref, document.baseURI).pathname.replace(/\/$/, '');
+    } catch {
+      basePath = baseHref.replace(/\/$/, '');
+    }
+
+    let internalPath = url ? url.pathname : href;
+    if (basePath && basePath !== '/' && internalPath.startsWith(basePath)) {
+      internalPath = internalPath.slice(basePath.length) || '/';
+    }
+    const suffix = url ? `${url.search}${url.hash}` : '';
+    internalPath = `${internalPath}${suffix}`;
+
+    event.preventDefault();
+    void this.router.navigateByUrl(internalPath);
+  }
+
   ngOnInit(): void {
     this.route.fragment
       .pipe(takeUntilDestroyed(this.destroyRef))
