@@ -222,12 +222,22 @@ section{padding:64px 0 90px}
 .doc h4{font-family:var(--sans);font-weight:700;font-size:16px;color:var(--amber);margin:22px 0 6px}
 .doc .class-warning-text {
   margin-bottom: 0 !important;
+  font-size: 17px !important;
+}
+.doc .class-warning-text-privacy {
+  font-size: 15px !important;
+}
+
+.doc .class-warning-text .mailto-link {
+  font-size: 15px !important;
 }
 .doc p{font-size:15.5px !important;color:var(--text) !important;opacity:.92 !important;margin-bottom:14px !important}
 .doc ul{margin:0 0 16px 4px;list-style:none}
 .doc ul li{position:relative;padding:7px 0 7px 22px;font-size:15.5px;color:var(--text);opacity:.92}
 .doc ul li::before{content:"";position:absolute;left:0;top:15px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
 .doc a{color:var(--accent)}
+
+
 
 /* dynamic API content pages */
 .api-content{width:100%;max-width:100%;overflow-x:hidden;padding:0}
@@ -464,7 +474,7 @@ span.we-provide-text-ai {
 
 .class-warning-text {
     margin: 0 !important;
-    font-size: 17px !important; 
+    font-size: 19px !important; 
 }
 
 .class-warning-text strong{
