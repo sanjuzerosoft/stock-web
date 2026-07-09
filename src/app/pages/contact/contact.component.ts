@@ -100,7 +100,7 @@ export class ContactComponent implements OnInit {
         },
         error: () => {
           this.submitting.set(false);
-          this.submitError.set('Something went wrong. Please try again or email us at info@stock-advisors.com.');
+          this.submitError.set('Something went wrong. Please try again or email us at info@stockadvisors.ai.');
         },
       });
   }

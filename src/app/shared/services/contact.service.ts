@@ -6,7 +6,8 @@ import { ContactRequest } from '../models/contact-request.model';
 @Injectable({ providedIn: 'root' })
 export class ContactService {
   private readonly http = inject(HttpClient);
-  private readonly apiUrl = 'https://dynstocks.com/restapi/webservices/contactUser';
+  // private readonly apiUrl = 'https://dynstocks.com/restapi/webservices/contactUser';
+  private readonly apiUrl = 'https://stockadvisors.ai/restapi/webservices/contactUser';
 
   submitContact(payload: ContactRequest): Observable<unknown> {
     return this.http.post(this.apiUrl, payload);

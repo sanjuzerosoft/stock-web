@@ -7,7 +7,8 @@ import { HOME_SECTION_IDS, HomeSectionKey } from '../models/content-ids';
 @Injectable({ providedIn: 'root' })
 export class ContentService {
   private readonly http = inject(HttpClient);
-  private readonly baseUrl = 'https://dynstocks.com/restapi/webservices/viewcontent/';
+  // private readonly baseUrl = 'https://dynstocks.com/restapi/webservices/viewcontent/';
+  private readonly baseUrl = 'https://stockadvisors.ai/restapi/webservices/viewcontent/';
 
   getContent(id: number): Observable<ContentInfo> {
     return this.http.get<ContentApiResponse>(this.baseUrl, { params: { id } }).pipe(

@@ -18,8 +18,14 @@ function escapeSql(value) {
   return value.replace(/\\/g, '\\\\').replace(/'/g, "''");
 }
 
+// let sql = `-- Stock Advisors website — Home page sections for viewcontent API
+// -- API: GET https://dynstocks.com/restapi/webservices/viewcontent/?id={id}
+// -- Adjust table/column names to match your backend database schema.
+// -- Existing records use: id, title, type, content, page, date_review
+
+// `;
 let sql = `-- Stock Advisors website — Home page sections for viewcontent API
--- API: GET https://dynstocks.com/restapi/webservices/viewcontent/?id={id}
+-- API: GET https://stockadvisors.ai/restapi/webservices/viewcontent/?id={id}
 -- Adjust table/column names to match your backend database schema.
 -- Existing records use: id, title, type, content, page, date_review
 
