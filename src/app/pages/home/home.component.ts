@@ -9,7 +9,8 @@ import { HomeSectionKey, STORE_LINK_IDS } from '../../shared/models/content-ids'
 import { ContentService } from '../../shared/services/content.service';
 import { NavigationService } from '../../shared/services/navigation.service';
 import { injectHeroStoreLinks } from '../../shared/utils/inject-hero-store-links';
-import { prepareApiContent } from '../../shared/utils/prepare-api-content';
+import { injectPricingListIcons, prepareApiContent } from '../../shared/utils/prepare-api-content';
+// import { injectPricingListIcons, injectPricingStoreButtons, prepareApiContent } from '../../shared/utils/prepare-api-content';
 
 @Component({
   selector: 'app-home',
@@ -95,6 +96,11 @@ export class HomeComponent implements OnInit {
 
             if (key === 'hero') {
               html = injectHeroStoreLinks(html, iosStore.content, androidStore.content);
+            }
+
+            if (key === 'pricing') {
+              html = injectPricingListIcons(html);
+              // html = injectPricingStoreButtons(html, iosStore.content, androidStore.content);
             }
 
             safe[key] = this.sanitizer.bypassSecurityTrustHtml(

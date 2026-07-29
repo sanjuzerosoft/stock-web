@@ -191,7 +191,7 @@ section{padding:64px 0 90px}
 .pricing{background:linear-gradient(180deg,#0c1d2c,var(--deep))}
 .price-wrap{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center}
 .price-card{background:var(--card);border:1px solid rgba(0,230,200,.3);border-radius:24px;padding:40px;box-shadow:0 40px 90px -40px rgba(0,0,0,.8);position:relative}
-.price-ribbon{position:absolute;top:22px;right:-1px;background:var(--accent);color:#062c2a;font-weight:700;font-size:12.5px;padding:7px 16px 7px 18px;border-radius:10px 0 0 10px}
+.price-ribbon{position:absolute;top:25px;right:0;background:var(--accent);color:#062c2a;font-weight:700;font-size:12.5px;padding:7px 16px 7px 18px;border-radius:10px 0 0 10px}
 .price-card .plan{font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin-bottom:14px}
 .price-amt{display:flex;align-items:baseline;gap:6px;margin-bottom:6px}
 .price-amt .cur{font-family:var(--serif);font-size:30px;color:var(--text)}
@@ -200,9 +200,12 @@ section{padding:64px 0 90px}
 .price-card .free{color:var(--accent);font-weight:600;font-size:16px;margin-bottom:26px}
 .price-list{list-style:none;margin-bottom:30px}
 .price-list li{padding:11px 0;border-top:1px solid rgba(78,122,150,.18);font-size:15px;display:flex;gap:12px;align-items:flex-start}
-.price-list li svg{flex:none;width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:2.4;margin-top:2px}
+.price-list li svg{flex:none;width:20px;height:20px;stroke:var(--accent);color: var(--accent);fill:none;stroke-width:2.4;margin-top:2px}
 .price-btn{display:block;text-align:center;background:var(--accent);color:#062c2a;font-weight:700;font-size:17px;padding:16px;border-radius:14px;transition:.18s;cursor:pointer}
 .price-btn:hover{background:#34f0d8;transform:translateY(-2px)}
+.dl-box{background:linear-gradient(160deg,rgba(0,230,200,.10),rgba(18,45,63,.55));border:1px solid rgba(0,230,200,.28);border-radius:16px;padding:20px 18px 18px;text-align:center;margin-bottom:2px}
+.dl-head{font-family:var(--serif);font-size:20px;color:var(--text);line-height:1.15;margin-bottom:5px}
+.dl-sub{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--accent);margin-bottom:15px}
 .legal-links{text-align:center;margin-top:18px;font-size:13.5px;color:var(--text2)}
 .legal-links a{color:var(--accent);font-weight:500;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .price-side h2{font-size:40px;margin-bottom:18px}
@@ -498,4 +501,11 @@ div.class-warning {
 
 div.privacy-points{
   flex-direction: row !important;
+}
+@media (max-width:560px){
+  .price-ribbon{
+    position: static;   /* take it out of absolute mode so text can flow around it */
+    float: right;        /* text after it now wraps around its box */
+    margin: 0 -40px 10px 12px; 
+  }
 }
