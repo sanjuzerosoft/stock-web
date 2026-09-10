@@ -5,12 +5,11 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { forkJoin } from 'rxjs';
 import { FooterComponent } from '../../core/components/footer/footer.component';
 import { PageLoadingComponent } from '../../shared/components/page-loading/page-loading.component';
-import { HomeSectionKey, STORE_LINK_IDS } from '../../shared/models/content-ids';
+import { HomeSectionKey } from '../../shared/models/content-ids';
 import { ContentService } from '../../shared/services/content.service';
 import { NavigationService } from '../../shared/services/navigation.service';
-import { injectHeroStoreLinks } from '../../shared/utils/inject-hero-store-links';
+import { enhanceStoreButtons } from '../../shared/utils/inject-hero-store-links';
 import { injectPricingListIcons, prepareApiContent } from '../../shared/utils/prepare-api-content';
-// import { injectPricingListIcons, injectPricingStoreButtons, prepareApiContent } from '../../shared/utils/prepare-api-content';
 
 @Component({
   selector: 'app-home',
@@ -83,24 +82,21 @@ export class HomeComponent implements OnInit {
 
     forkJoin({
       sections: this.contentService.getHomeSections(),
-      iosStore: this.contentService.getContent(STORE_LINK_IDS.ios),
-      androidStore: this.contentService.getContent(STORE_LINK_IDS.android),
     })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: ({ sections, iosStore, androidStore }) => {
+        next: ({ sections }) => {
           const safe: Partial<Record<HomeSectionKey, SafeHtml>> = {};
 
           for (const key of Object.keys(sections) as HomeSectionKey[]) {
             let html = sections[key].content;
 
-            if (key === 'hero') {
-              html = injectHeroStoreLinks(html, iosStore.content, androidStore.content);
+            if (key === 'hero' || key === 'pricing') {
+              html = enhanceStoreButtons(html);
             }
 
             if (key === 'pricing') {
               html = injectPricingListIcons(html);
-              // html = injectPricingStoreButtons(html, iosStore.content, androidStore.content);
             }
 
             safe[key] = this.sanitizer.bypassSecurityTrustHtml(
